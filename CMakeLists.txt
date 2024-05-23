@@ -100,7 +100,7 @@ else()
   if(MSVC)
     target_compile_options(imgui PRIVATE /W4 /WX /arch:AVX2 /fp:fast)
   endif()
-  target_link_libraries(imgui PUBLIC glfw OpenGL::GL imm32)
+  target_link_libraries(imgui PUBLIC glfw imm32)
   target_compile_definitions(imgui PRIVATE IMGUI_DLL_EXPORT)
 
   include_directories(../imgui/ ../imgui/examples ../imgui/examples/libs/gl3w ../imgui/backends ../imgui/misc/cpp)
@@ -162,7 +162,7 @@ add_library(app
   common/Fonts/RobotoMonoItalic.cpp
 )
 target_include_directories(app PUBLIC common)
-target_link_libraries(app PUBLIC implot imgui imnodes nfd glad)
+target_link_libraries(app PUBLIC implot imgui imnodes nfd glad OpenGL::GL)
 target_compile_features(app PRIVATE cxx_std_17)
 if(MSVC)
   target_compile_options(app PRIVATE /W4 /WX /arch:AVX2 /fp:fast /permissive-) 
